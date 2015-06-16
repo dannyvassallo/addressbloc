@@ -19,4 +19,13 @@ RSpec.describe AddressBook do
     expect(book.entries.size).to eq 0
   end
 
+  it "should add the remove an entry to the address book" do
+    book = AddressBook.new
+    expect(book.entries.size).to eq 0
+    book.add_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
+    expect(book.entries.size).to eq 1
+    book.remove_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
+    expect(book.entries.size).to eq 0
+  end
+
 end
