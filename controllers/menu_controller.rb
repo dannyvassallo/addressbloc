@@ -14,7 +14,8 @@ class MenuController
     puts "2 - Create an entry"
     puts "3 - Search for an entry"
     puts "4 - Import entries from a CSV"
-    puts "5 - Exit"
+    puts "5 - View Entry \"n\""
+    puts "6 - Exit"
     print "Enter your selection: "
 
     selection = gets.to_i
@@ -36,6 +37,10 @@ class MenuController
       read_csv
       main_menu
     when 5
+      system "clear"
+      view_entry
+      main_menu
+    when 6
       puts "Good-bye!"
       exit(0)
       system "clear"
@@ -85,6 +90,32 @@ class MenuController
       system "clear"
       puts "#{selection} is not a valid input"
       entries_submenu(entry)
+    end
+  end
+
+  def view_entry
+    puts "Enter an index number"
+    print "Search: "
+    search = gets.chomp
+    @entries = @address_book.entries
+    if @entries.count > 0
+      @entries.each_with_index do |entry, index|
+        @search_index = index + 1
+        if @search_index == search.to_i
+          system "clear"
+          puts entry
+          entry_submenu(entry)
+        elsif search.is_integer? == false
+          system "clear"
+          puts "Please enter a valid number."
+        else
+          system "clear"
+          puts "Entry not found."
+        end
+      end
+    else
+      system "clear"
+      puts "You have to add at least one entry first!"
     end
   end
 
