@@ -106,14 +106,14 @@ class MenuController
     print "Search: "
     search = gets.chomp
     entries = @address_book.entries
-    integer = search.to_i - 1
+    entry_index = search.to_i - 1
     if entries.count > 0
       if search == ""
         system "clear"
         puts "Enter something."
-      elsif !entries[integer].nil?
+      elsif entries[entry_index]
         system "clear"
-        puts entries[integer]
+        puts entries[entry_index]
       else
         system "clear"
         puts "Entry not found."
