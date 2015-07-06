@@ -100,7 +100,10 @@ class MenuController
     entries = @address_book.entries
     integer = search.to_i - 1
     if entries.count > 0
-      if !entries[integer].nil?
+      if search == ""
+        system "clear"
+        puts "Enter something."
+      elsif !entries[integer].nil?
         system "clear"
         puts entries[integer]
       else
