@@ -2,7 +2,7 @@ require_relative "controllers/menu_controller"
 
 class String
   def is_integer?
-    self.to_i.to_s == self
+    self.to_s == self
   end
 end
 

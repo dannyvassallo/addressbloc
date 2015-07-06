@@ -97,21 +97,15 @@ class MenuController
     puts "Enter an index number"
     print "Search: "
     search = gets.chomp
-    @entries = @address_book.entries
-    if @entries.count > 0
-      @entries.each_with_index do |entry, index|
-        @search_index = index + 1
-        if @search_index == search.to_i
-          system "clear"
-          puts entry
-          entry_submenu(entry)
-        elsif search.is_integer? == false
-          system "clear"
-          puts "Please enter a valid number."
-        else
-          system "clear"
-          puts "Entry not found."
-        end
+    entries = @address_book.entries
+    integer = search.to_i - 1
+    if entries.count > 0
+      if !entries[integer].nil?
+        system "clear"
+        puts entries[integer]
+      else
+        system "clear"
+        puts "Entry not found."
       end
     else
       system "clear"
